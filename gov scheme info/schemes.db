@@ -1,0 +1,26 @@
+import sqlite3
+
+conn = sqlite3.connect('../schemes.db')  # adjust path to go one level up
+cursor = conn.cursor()
+
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS schemes (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        description TEXT NOT NULL
+    )
+''')
+
+sample_schemes = [
+    ("Pradhan Mantri Awas Yojana", "Affordable housing for all."),
+    ("Digital India", "Promoting digital access and services."),
+    ("Startup India", "Support for startups and innovation."),
+    ("Beti Bachao Beti Padhao", "Promoting girl child education.")
+]
+
+cursor.executemany("INSERT INTO schemes (name, description) VALUES (?, ?)", sample_schemes)
+
+conn.commit()
+conn.close()
+
+print("✅ Sample data inserted into schemes.db!")

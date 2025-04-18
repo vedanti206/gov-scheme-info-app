@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Government Scheme Info App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design -->
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            padding: 50px;
+        }
+        h1 {
+            color: darkgreen;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            background-color: green;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        a:hover {
+            background-color: darkgreen; /* Hover effect */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to the Government Scheme Info App</h1>
+    <p>Find all government schemes available for farmers with simple checklists and application steps.</p>
+    
+    <!-- Corrected the link to the /schemes route -->
+    <a href="{{ url_for('schemes') }}">View Schemes</a>
+    <a href="{{ url_for('add') }}" class="btn btn-primary">Add New Scheme</a>
+
+    
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Government Schemes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            padding: 40px;
+        }
+        h1 {
+            text-align: center;
+            color: darkgreen;
+        }
+        .scheme-list {
+            max-width: 900px;
+            margin: auto;
+        }
+        .scheme-item {
+            background-color: #e6ffe6;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .scheme-name {
+            color: green;
+            font-size: 24px;
+        }
+        .scheme-details {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        .view-details-btn, .delete-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: darkgreen;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .view-details-btn:hover {
+            background-color: green;
+        }
+        .delete-btn {
+            background-color: #cc0000;
+        }
+        .delete-btn:hover {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div style="max-width: 900px; margin: auto;">
+      {% for category, message in messages %}
+        <div style="background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 10px; border-radius: 5px; margin-bottom: 20px;">
+            {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<h1>Available Government Schemes for Farmers</h1>
+
+<div class="scheme-list">
+    {% if schemes %}
+        <ul style="list-style-type: none; padding: 0;">
+            {% for scheme in schemes %}
+                <li class="scheme-item">
+                    <h2 class="scheme-name">{{ scheme['name'] }}</h2>
+                    <p class="scheme-details"><strong>Eligibility:</strong> {{ scheme['eligibility'] }}</p>
+                    <p class="scheme-details"><strong>How to Apply:</strong> {{ scheme['application_steps'] }}</p>
+                    
+                    <a href="{{ url_for('details', scheme_id=scheme['id']) }}" class="view-details-btn">View Details</a>
+
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p style="text-align: center; font-size: 18px;">No schemes available at the moment.</p>
+    {% endif %}
+</div>
+
+<a href="{{ url_for('index') }}" class="view-details-btn">Go to Home</a>
+
+</body>
+</html>

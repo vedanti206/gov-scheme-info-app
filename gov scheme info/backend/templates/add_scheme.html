@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Government Scheme</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            padding: 40px;
+        }
+        h1 {
+            text-align: center;
+            color: darkgreen;
+        }
+        .form-container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-size: 16px;
+            color: #333;
+            display: block;
+            margin-top: 15px;
+        }
+        input[type="text"], input[type="url"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        button {
+            background-color: darkgreen;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: green;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            color: white;
+            background-color: gray;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Add New Government Scheme</h1>
+
+    <div class="form-container">
+        <form action="{{ url_for('add') }}" method="POST">
+            <label for="name">Scheme Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+
+            <label for="eligibility">Eligibility (comma separated):</label>
+            <input type="text" id="eligibility" name="eligibility" required>
+
+            <label for="documents">Documents Required (comma separated):</label>
+            <input type="text" id="documents" name="documents" required>
+
+            <label for="application_steps">Application Steps (comma separated):</label>
+            <input type="text" id="application_steps" name="application_steps" required>
+
+            <label for="official_link">Official Link:</label>
+            <input type="url" id="official_link" name="official_link" required>
+
+            <label for="helpline">Helpline:</label>
+            <input type="text" id="helpline" name="helpline" required>
+
+            <button type="submit">Add Scheme</button>
+        </form>
+
+        <!-- Optional Back to Home Button -->
+        <a href="{{ url_for('index') }}" class="back-btn">Back to Home</a>
+    </div>
+
+</body>
+</html>

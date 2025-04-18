@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ scheme.name }} - Scheme Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0fff0;
+            padding: 40px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #e6ffe6;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 100, 0, 0.2);
+        }
+        h1 {
+            color: darkgreen;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .detail {
+            margin-bottom: 15px;
+        }
+        .label {
+            font-weight: bold;
+            color: green;
+        }
+        a {
+            color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>{{ scheme.name }}</h1>
+
+        <div class="detail"><span class="label">Description:</span> {{ scheme.description }}</div>
+        <div class="detail"><span class="label">Eligibility:</span> {{ scheme.eligibility }}</div>
+        <div class="detail"><span class="label">Required Documents:</span> {{ scheme.documents }}</div>
+        <div class="detail"><span class="label">Application Steps:</span> {{ scheme.application_steps }}</div>
+        <div class="detail"><span class="label">Official Link:</span>
+            <a href="{{ scheme.official_link }}" target="_blank">{{ scheme.official_link }}</a>
+        </div>
+        <div class="detail"><span class="label">Helpline:</span> {{ scheme.helpline }}</div>
+    </div>
+
+</body>
+</html>
